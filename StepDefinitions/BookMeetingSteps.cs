@@ -52,12 +52,18 @@ public sealed class BookMeetingSteps
         await bookingPage.ClickNextAsync();
     }
 
-    [When(@"I fill in the booking form")]
-    public async Task WhenIFillInTheBookingForm()
+    [When(@"I fill in the booking form with the following details:")]
+    public async Task FillBookingFormWithDetails(Table table)
     {
-        var bookingPage = new BookingPage(page);
-        await bookingPage.FillFormAsync();
+        var formData = table.Rows.ToDictionary(row => row["Field"], row => row["Value"]);
+
+        await page.GetByRole(AriaRole.Textbox, new() { Name = "Name *" }).FillAsync(formData["Name"]);
+        await page.GetByRole(AriaRole.Textbox, new() { Name = "Email *" }).FillAsync(formData["Email"]);
+        await page.GetByRole(AriaRole.Textbox, new() { Name = "Company *" }).FillAsync(formData["Company"]);
+        await page.GetByRole(AriaRole.Textbox, new() { Name = "Topic description" }).FillAsync(formData["Topic description"]);
     }
+
+
 
     [When(@"I schedule the event")]
     public async Task WhenIScheduleTheEvent()

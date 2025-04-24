@@ -9,6 +9,14 @@
     And I switch to the Calendly tab
     And I select a date and time
     And I click Next
-    And I fill in the booking form
+    And I fill in the booking form with the following details:
+      | Field             | Value            |
+      | Name              | Cal              |
+      | Email             | cal@cal.com      |
+      | Company           | cal ng ltd       |
+      | Topic description | na               |
     And I schedule the event
     Then the booking should be confirmed
+
+
+   

@@ -114,13 +114,28 @@ namespace testDevLabs.Features
 #line 11
     await testRunner.AndAsync("I click Next", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table1.AddRow(new string[] {
+                            "Name",
+                            "Cal"});
+                table1.AddRow(new string[] {
+                            "Email",
+                            "cal@cal.com"});
+                table1.AddRow(new string[] {
+                            "Company",
+                            "cal ng ltd"});
+                table1.AddRow(new string[] {
+                            "Topic description",
+                            "na"});
 #line 12
-    await testRunner.AndAsync("I fill in the booking form", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("I fill in the booking form with the following details:", ((string)(null)), table1, "And ");
 #line hidden
-#line 13
+#line 18
     await testRunner.AndAsync("I schedule the event", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 14
+#line 19
     await testRunner.ThenAsync("the booking should be confirmed", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
