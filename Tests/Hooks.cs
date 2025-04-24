@@ -38,7 +38,7 @@ public sealed class BaseHooks
         var browser = container.Resolve<IBrowser>();
         if (browser != null)
         {
-            await browser.CloseAsync();
+          await browser.CloseAsync();
         }
     }
 

@@ -12,10 +12,10 @@ public class BookingPage : BasePage
     {
         await Page.GetByRole(AriaRole.Button, new() { Name = "Tuesday, April 29 - Times" }).ClickAsync();
         await Page.WaitForTimeoutAsync(2000);
-        await Page.GetByRole(AriaRole.Button, new() { Name = "16:30" }).ClickAsync();
+        await Page.GetByRole(AriaRole.Button, new() { Name = "13:00" }).ClickAsync();
     }
 
-    public async Task ClickNextAsync() => await Page.GetByRole(AriaRole.Button, new() { Name = "Next 16:" }).ClickAsync();
+    public async Task ClickNextAsync() => await Page.GetByRole(AriaRole.Button, new() { Name = "Next 13:" }).ClickAsync();
 
     public async Task ScheduleEventAsync() => await Page.GetByRole(AriaRole.Button, new() { Name = submitButton }).ClickAsync();
 

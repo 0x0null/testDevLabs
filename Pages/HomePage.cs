@@ -4,10 +4,7 @@ public class HomePage : BasePage
 {
     private readonly IPage page;
 
-    public HomePage(IPage page) : base(page)
-    {
-        this.page = page; 
-    }
+    public HomePage(IPage page) : base(page) => this.page = page;
 
     public async Task ClickBookMeetingAsync()
     {
@@ -23,13 +20,8 @@ public abstract class BasePage
 {
     protected IPage Page { get; }
 
-    protected BasePage(IPage page)
-    {
-        Page = page;
-    }
+    protected BasePage(IPage page) => Page = page;
+   
 
-    public async Task NavigateAsync(string url)
-    {
-        await Page.GotoAsync(url, new() { WaitUntil = WaitUntilState.DOMContentLoaded });
-    }
+    public async Task NavigateAsync(string url) => await Page.GotoAsync(url, new() { WaitUntil = WaitUntilState.DOMContentLoaded });
 }
