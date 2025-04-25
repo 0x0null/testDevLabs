@@ -108,34 +108,40 @@ namespace testDevLabs.Features
 #line 9
     await testRunner.AndAsync("I switch to the Calendly tab", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                            "Date",
+                            "Time"});
+                table1.AddRow(new string[] {
+                            "Tuesday, April 29",
+                            "7:30"});
 #line 10
-    await testRunner.AndAsync("I select a date and time", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("I select the following date and time:", ((string)(null)), table1, "And ");
 #line hidden
-#line 11
+#line 13
     await testRunner.AndAsync("I click Next", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Field",
                             "Value"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Name",
                             "Cal"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Email",
                             "cal@cal.com"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Company",
                             "cal ng ltd"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Topic description",
                             "na"});
-#line 12
-    await testRunner.AndAsync("I fill in the booking form with the following details:", ((string)(null)), table1, "And ");
+#line 14
+    await testRunner.AndAsync("I fill in the booking form with the following details:", ((string)(null)), table2, "And ");
 #line hidden
-#line 18
+#line 20
     await testRunner.AndAsync("I schedule the event", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 21
     await testRunner.ThenAsync("the booking should be confirmed", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

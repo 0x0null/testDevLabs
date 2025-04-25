@@ -7,10 +7,12 @@
     Given I am on the TestDevLab test automation page
     When I click the Book a meeting button
     And I switch to the Calendly tab
-    And I select a date and time
+    And I select the following date and time:
+      | Date                | Time    |
+      | Tuesday, April 29   | 7:30    |
     And I click Next
     And I fill in the booking form with the following details:
-      | Field             | Value            |
+      | Field             | Value            |-
       | Name              | Cal              |
       | Email             | cal@cal.com      |
       | Company           | cal ng ltd       |

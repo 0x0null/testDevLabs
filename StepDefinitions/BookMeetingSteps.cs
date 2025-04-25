@@ -1,6 +1,4 @@
-﻿using TestAutomationFramework.Pages;
-
-namespace TestAutomationFramework.StepDefinitions;
+﻿namespace TestAutomationFramework.StepDefinitions;
 
 [Binding]
 public sealed class BookMeetingSteps
@@ -28,32 +26,17 @@ public sealed class BookMeetingSteps
     public async Task WhenIClickTheBookAMeetingButton() =>  await homePage.ClickBookMeetingAsync();
 
     [When(@"I switch to the Calendly tab")]
-    public async Task WhenISwitchToTheCalendlyTab()
-    {
-        var pages = context.Pages;
-        Assert.That(pages.Count, Is.AtLeast(2), "Expected two tabs");
-        page = pages[1];
-        await page.BringToFrontAsync();
-    }
-
-    [When(@"I select a date and time")]
-    public async Task WhenISelectADateAndTime() => await bookingPage.SelectDateAndTimeAsync();
+    public async Task WhenISwitchToTheCalendlyTab() => await bookingPage.SwitchToCalendlyTab();
+    
+    [When(@"I select the following date and time:")]
+    public async Task WhenISelectTheFollowingDateAndTime(Table table) => await bookingPage.SelectDateAndTimeAsync(table);
     
     [When(@"I click Next")]
     public async Task WhenIClickNext() => await bookingPage.ClickNextAsync();
 
     [When(@"I fill in the booking form with the following details:")]
-    public async Task FillBookingFormWithDetails(Table table)
-    {
-        var formData = table.Rows.ToDictionary(row => row["Field"], row => row["Value"]);
-
-        await page.GetByRole(AriaRole.Textbox, new() { Name = "Name *" }).FillAsync(formData["Name"]);
-        await page.GetByRole(AriaRole.Textbox, new() { Name = "Email *" }).FillAsync(formData["Email"]);
-        await page.GetByRole(AriaRole.Textbox, new() { Name = "Company *" }).FillAsync(formData["Company"]);
-        await page.GetByRole(AriaRole.Textbox, new() { Name = "Topic description" }).FillAsync(formData["Topic description"]);
-    }
-
-
+    public async Task FillBookingFormWithDetails(Table table) => await bookingPage.FillForm(table);
+    
 
     [When(@"I schedule the event")]
     public async Task WhenIScheduleTheEvent() => await bookingPage.ScheduleEventAsync();
