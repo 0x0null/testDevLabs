@@ -38,7 +38,6 @@ public class BookingPage
 
         foreach (var (field, value) in formData)
         {
-            // Optional: add "*" if needed for required fields
             var label = field switch
             {
                 "Name" => "Name *",
@@ -52,7 +51,7 @@ public class BookingPage
 
     }
 
-    public async Task ScheduleEventAsync() => await page.Locator(".t1850o97.tneybjo").ClickAsync();
+    public async Task ScheduleEventAsync() => await page.GetByRole(AriaRole.Button, new() { Name = "Schedule Event" }).ClickAsync();
 
     public async Task ValidateBookingAsync() => await assert.Expect(page.GetByText("You are scheduled", new() { Exact = true })).ToBeVisibleAsync();
 }

@@ -9,7 +9,7 @@
     And I switch to the Calendly tab
     And I select the following date and time:
       | Date                | Time    |
-      | Tuesday, April 29   | 7:30    |
+      | Tuesday, April 29   | 8:00    |
     And I click Next
     And I fill in the booking form with the following details:
       | Field             | Value            |-

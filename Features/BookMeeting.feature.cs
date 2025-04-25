@@ -113,7 +113,7 @@ namespace testDevLabs.Features
                             "Time"});
                 table1.AddRow(new string[] {
                             "Tuesday, April 29",
-                            "7:30"});
+                            "8:00"});
 #line 10
     await testRunner.AndAsync("I select the following date and time:", ((string)(null)), table1, "And ");
 #line hidden
