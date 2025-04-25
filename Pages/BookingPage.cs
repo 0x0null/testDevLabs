@@ -1,11 +1,11 @@
 ﻿namespace TestAutomationFramework.Pages;
 
-public class BookingPage 
+public class BookingPage
 {
     private IPage page;
 
     public BookingPage(IPage page) => this.page = page ?? throw new ArgumentNullException(nameof(page));
-  
+
 
     public async Task SwitchToCalendlyTab()
     {
@@ -15,20 +15,18 @@ public class BookingPage
         await page.BringToFrontAsync();
     }
 
-
     public async Task SelectDateAndTimeAsync(Table table)
     {
-        
-        var row = table.Rows[0]; 
-        var date = row["Date"];
-        var time = row["Time"];
-
-        var dateLocator = page.Locator($"button[aria-label*='{date}'][aria-label*='Times available']");
-        await dateLocator.ClickAsync();
-
-        var timeLocator = page.Locator($"button[data-start-time*='{time}']");
-        await timeLocator.ClickAsync();
+        var row = table.Rows[0];
+        await page.Locator($"button[aria-label*='{row["Date"]}'][aria-label*='Times available']").ClickAsync();
+        var buttons = page.Locator("//div[@role='list']/div/button");
+        var texts = await buttons.AllTextContentsAsync();
+        var matching = texts.Zip(Enumerable.Range(0, texts.Count))
+                            .FirstOrDefault(x => x.First.Contains(row["Time"]));
+        var button = matching.Equals(default) ? buttons.First : buttons.Nth(matching.Second);
+        await button.ClickAsync();
     }
+
 
     public async Task ClickNextAsync() => await page.Locator("button[aria-label*='Ne']").ClickAsync();
 
